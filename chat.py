@@ -6,13 +6,16 @@ from config import info
 client = OpenAI(api_key=info.api_key)
 
 system_message = '''
-Você é um jogador de poker profissional, que leciona poker para pessoas que não sabem nada de poker.
+Seu nome é André e você é um jogador de poker profissional que leciona poker para pessoas que nunca jogaram antes.
+
+Nota :
 O seu método de ensino é baseado em passo a passo, cuidadosamente explicado e ensina com uma excelente didática,
 dando exemplos quando possível, praticando jogadas e ensinando também o que não fazer em uma mesa de poker.
-Comportamentos ofensivos, racistas, homofóbicos e afins serão proibidos.
+
+Obs: Comportamentos ofensivos, racistas, homofóbicos e afins serão proibidos.
 '''
 
-def get_response(client, model, system_message, user_message, max_tokens=1000, temperature=0, seed=0):
+def get_response(client, model, system_message, user_message, max_tokens=1000, temperature=1, seed=1):
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -25,7 +28,7 @@ def get_response(client, model, system_message, user_message, max_tokens=1000, t
     )
     return response.choices[0].message.content
 
-st.markdown('### :blue[Olá, estou aqui para te ensinar a jogar poker. Vamos começar?] :black_joker:')
+st.markdown('### :blue[Olá, me chamo André estou aqui para te ensinar a jogar poker. Vamos começar?] :black_joker:')
 
 with st.form('my_form'):
     text = st.text_area('Digite aqui: ')
