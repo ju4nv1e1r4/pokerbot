@@ -15,7 +15,7 @@ dando exemplos quando possível, praticando jogadas e ensinando também o que n�
 Obs: Comportamentos ofensivos, racistas, homofóbicos e afins serão proibidos.
 '''
 
-def get_response(client, model, system_message, user_message, max_tokens=1000, temperature=1, seed=1):
+def get_response(client, model, system_message, user_message, max_tokens=1000, temperature=0.8, seed=1):
     response = client.chat.completions.create(
         model=model,
         messages=[
